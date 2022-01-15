@@ -1,5 +1,68 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
-<h1>Title</h1>
+<body>
+    <br /><br /><br /><br />
+    <div id="title">Title</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+
+    <div class="top_navbar">
+        <button id="button">One</button>
+        <button id="button">Two</button>
+        <button id="button">Three</button>
+        <button id="button">Four</button>
+        <button id="last_button">Five</button>
+    </div>
+</body>
+
+<style>
+    body {
+        /*        background-image: url('https://www.pixelstalk.net/wp-content/uploads/images1/Dark-Space-Backgrounds-HD.jpg');
+        background-repeat: no-repeat;*/
+        background-color: rgb(27, 28, 28);
+    }
+
+    #title {
+        color: white;
+        text-align: center;
+    }
+
+    .top_navbar {
+        position: fixed;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6%;
+        background-color: rgb(27, 191, 155)
+    }
+
+    #button {
+        width: 19.5%;
+        height: 100%;
+        color: white;
+        padding: 0px;
+        background-color: transparent;
+        border: none;
+        border-right: 1.3px solid;
+        border-color: white;
+        text-align: center;
+    }
+
+    #last_button {
+        width: 19.75%;
+        color: white;
+        padding: 0px;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+    }
+</style>
