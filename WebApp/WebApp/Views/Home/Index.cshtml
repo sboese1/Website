@@ -8,9 +8,151 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
+        var player_turn = "X";
+        function turn(square_id) {
+            if (player_turn == "X") {
+                document.getElementById(square_id).value = "X";
+                document.getElementById(square_id).disabled = true;
+                document.getElementById('change_turn').value = "O's turn";
+                player_turn = "O";
+            }
+            else {
+                document.getElementById(square_id).value = "O";
+                document.getElementById(square_id).disabled = true;
+                document.getElementById('change_turn').value = "X's turn";
+                player_turn = "X";
+            }
+        }
+        function start_board() {
+            var rand_num = Math.floor(Math.random() * 2);
+            if (rand_num == 0) {
+                document.getElementById('change_turn').value = "X's turn";
+                player_turn = "X";
+            }
+            else {
+                document.getElementById('change_turn').value = "O's turn";
+                player_turn = "O";
+            }
+            document.getElementById('1').disabled = false;
+            document.getElementById('2').disabled = false;
+            document.getElementById('3').disabled = false;
+            document.getElementById('4').disabled = false;
+            document.getElementById('5').disabled = false;
+            document.getElementById('6').disabled = false;
+            document.getElementById('7').disabled = false;
+            document.getElementById('8').disabled = false;
+            document.getElementById('9').disabled = false;
+        }
+        function reset_board() {
+            document.getElementById('1').value = "";
+            document.getElementById('2').value = "";
+            document.getElementById('3').value = "";
+            document.getElementById('4').value = "";
+            document.getElementById('5').value = "";
+            document.getElementById('6').value = "";
+            document.getElementById('7').value = "";
+            document.getElementById('8').value = "";
+            document.getElementById('9').value = "";
+            document.getElementById('1').disabled = true;
+            document.getElementById('2').disabled = true;
+            document.getElementById('3').disabled = true;
+            document.getElementById('4').disabled = true;
+            document.getElementById('5').disabled = true;
+            document.getElementById('6').disabled = true;
+            document.getElementById('7').disabled = true;
+            document.getElementById('8').disabled = true;
+            document.getElementById('9').disabled = true;
+        }
+        function check() {
+            var square_1 = document.getElementById('1').value;
+            var square_2 = document.getElementById('2').value;
+            var square_3 = document.getElementById('3').value;
+            var square_4 = document.getElementById('4').value;
+            var square_5 = document.getElementById('5').value;
+            var square_6 = document.getElementById('6').value;
+            var square_7 = document.getElementById('7').value;
+            var square_8 = document.getElementById('8').value;
+            var square_9 = document.getElementById('9').value;
 
-        });
+            var counter = 0;
+
+            if (square_1 == 'X' && square_2 == 'X' && square_3 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_1 == 'O' && square_2 == 'O' && square_3 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_4 == 'X' && square_5 == 'X' && square_6 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_4 == 'O' && square_5 == 'O' && square_6 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_7 == 'X' && square_8 == 'X' && square_9 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_7 == 'O' && square_8 == 'O' && square_9 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_1 == 'X' && square_4 == 'X' && square_7 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_1 == 'O' && square_4 == 'O' && square_7 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_2 == 'X' && square_5 == 'X' && square_8 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_2 == 'O' && square_5 == 'O' && square_8 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_3 == 'X' && square_6 == 'X' && square_9 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_3 == 'O' && square_6 == 'O' && square_9 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_1 == 'X' && square_5 == 'X' && square_9 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_1 == 'O' && square_5 == 'O' && square_9 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+            else if (square_3 == 'X' && square_5 == 'X' && square_7 == 'X') {
+                counter = 1;
+                alert("Player one has won!");
+            }
+            else if (square_3 == 'O' && square_5 == 'O' && square_7 == 'O') {
+                counter = 1;
+                alert("Player two has won!");
+            }
+
+            if (counter == 1) {
+                document.getElementById('1').disabled = true;
+                document.getElementById('2').disabled = true;
+                document.getElementById('3').disabled = true;
+                document.getElementById('4').disabled = true;
+                document.getElementById('5').disabled = true;
+                document.getElementById('6').disabled = true;
+                document.getElementById('7').disabled = true;
+                document.getElementById('8').disabled = true;
+                document.getElementById('9').disabled = true;
+            }
+        }
     </script>
 
     <div class="top_navbar">
@@ -20,12 +162,28 @@
         <button id="button">Four</button>
         <button id="last_button">Five</button>
     </div>
+
+    <h2 id="game_title">Tic-Tac-Toe</h2>
+
+    <button id="start" onclick="start_board()">Start</button>
+    <button id="reset" onclick="reset_board()">Reset</button>
+
+    <form class="tic-tac-toe">
+        <input id="1" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('1'); check()" readonly disabled />
+        <input id="2" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('2'); check()" readonly disabled />
+        <input id="3" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('3'); check()" readonly disabled /> <br />
+        <input id="4" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('4'); check()" readonly disabled />
+        <input id="5" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('5'); check()" readonly disabled />
+        <input id="6" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('6'); check()" readonly disabled /> <br />
+        <input id="7" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('7'); check()" readonly disabled />
+        <input id="8" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('8'); check()" readonly disabled />
+        <input id="9" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('9'); check()" readonly disabled /> <br /><br />
+        <input id="change_turn" type="text" style="width: 125px" value="X's turn" readonly />
+    </form>
 </body>
 
 <style>
     body {
-        /*        background-image: url('https://www.pixelstalk.net/wp-content/uploads/images1/Dark-Space-Backgrounds-HD.jpg');
-        background-repeat: no-repeat;*/
         background-color: rgb(27, 28, 28);
     }
 
@@ -64,5 +222,36 @@
         background-color: transparent;
         border: none;
         text-align: center;
+    }
+
+    #start {
+        position: fixed;
+        top: 40%;
+        left: 2.5%;
+    }
+
+    #reset {
+        position: fixed;
+        top: 40%;
+        left: 5.6%;
+    }
+
+    #change_turn {
+        position: fixed;
+        top: 40%;
+        left: 9%;
+    }
+
+    #game_title {
+        color: white;
+        position: fixed;
+        top: 6%;
+        left: 5%;
+    }
+
+    .tic-tac-toe {
+        position: fixed;
+        top: 14%;
+        left: 2.5%;
     }
 </style>
