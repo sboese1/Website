@@ -6,8 +6,31 @@
     <br /><br /><br /><br />
     <div id="title">Title</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        import axios from "axios";
+
+        const options = {
+            method: 'POST',
+            url: 'https://bravenewcoin.p.rapidapi.com/oauth/token',
+            headers: {
+                'content-type': 'application/json',
+                'x-rapidapi-host': 'bravenewcoin.p.rapidapi.com',
+                'x-rapidapi-key': 'dacc04f642msha48f626c35e16a2p102850jsnef6fe0721eb7'
+            },
+            data: {
+                audience: 'https://api.bravenewcoin.com',
+                client_id: 'oCdQoZoI96ERE9HY3sQ7JmbACfBf55RY',
+                grant_type: 'client_credentials'
+            }
+        };
+
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+
         var player_turn = "X";
         function turn(square_id) {
             if (player_turn == "X") {
@@ -153,6 +176,31 @@
                 document.getElementById('9').disabled = true;
             }
         }
+
+
+        var board = document.getElementById('snake_game');
+
+        function create_board() {
+            for (var i = 0; i < 100; i++) {
+                var div = document.createElement("div");
+                board.appendChild(div);
+            }
+        }
+
+        function start_game() {
+            create_snake();
+        }
+
+        function create_snake() {
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("keyup", control);
+            create_board();
+            start_game();
+            play_again.addEventListener("click", replay);
+        });
     </script>
 
     <div class="top_navbar">
@@ -164,6 +212,8 @@
     </div>
 
     <h2 id="game_title">Tic-Tac-Toe</h2>
+
+    <button class="main-analyze-button" onclick="onAnalyzeButtonClick()">Analyze...</button>
 
     <button id="start" onclick="start_board()">Start</button>
     <button id="reset" onclick="reset_board()">Reset</button>
@@ -180,6 +230,8 @@
         <input id="9" type="text" style="width: 75px; height: 75px; text-align: center; font-size: 40px" onclick="turn('9'); check()" readonly disabled /> <br /><br />
         <input id="change_turn" type="text" style="width: 125px" value="X's turn" readonly />
     </form>
+
+    <div class="snake_game"></div>
 </body>
 
 <style>
@@ -226,32 +278,32 @@
 
     #start {
         position: fixed;
-        top: 40%;
-        left: 2.5%;
+        top: 375px;
+        left: 40px;
     }
 
     #reset {
         position: fixed;
-        top: 40%;
-        left: 5.6%;
+        top: 375px;
+        left: 92px;
     }
 
     #change_turn {
         position: fixed;
-        top: 40%;
-        left: 9%;
+        top: 375px;
+        left: 150px;
     }
 
     #game_title {
         color: white;
         position: fixed;
-        top: 6%;
-        left: 5%;
+        top: 60px;
+        left: 80px;
     }
 
     .tic-tac-toe {
         position: fixed;
-        top: 14%;
-        left: 2.5%;
+        top: 130px;
+        left: 40px;
     }
 </style>
