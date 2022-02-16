@@ -6,31 +6,7 @@
     <br /><br /><br /><br />
     <div id="title">Title</div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        import axios from "axios";
-
-        const options = {
-            method: 'POST',
-            url: 'https://bravenewcoin.p.rapidapi.com/oauth/token',
-            headers: {
-                'content-type': 'application/json',
-                'x-rapidapi-host': 'bravenewcoin.p.rapidapi.com',
-                'x-rapidapi-key': 'dacc04f642msha48f626c35e16a2p102850jsnef6fe0721eb7'
-            },
-            data: {
-                audience: 'https://api.bravenewcoin.com',
-                client_id: 'oCdQoZoI96ERE9HY3sQ7JmbACfBf55RY',
-                grant_type: 'client_credentials'
-            }
-        };
-
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
-
         var player_turn = "X";
         function turn(square_id) {
             if (player_turn == "X") {
@@ -176,31 +152,6 @@
                 document.getElementById('9').disabled = true;
             }
         }
-
-
-        var board = document.getElementById('snake_game');
-
-        function create_board() {
-            for (var i = 0; i < 100; i++) {
-                var div = document.createElement("div");
-                board.appendChild(div);
-            }
-        }
-
-        function start_game() {
-            create_snake();
-        }
-
-        function create_snake() {
-
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.addEventListener("keyup", control);
-            create_board();
-            start_game();
-            play_again.addEventListener("click", replay);
-        });
     </script>
 
     <div class="top_navbar">
@@ -212,8 +163,6 @@
     </div>
 
     <h2 id="game_title">Tic-Tac-Toe</h2>
-
-    <button class="main-analyze-button" onclick="onAnalyzeButtonClick()">Analyze...</button>
 
     <button id="start" onclick="start_board()">Start</button>
     <button id="reset" onclick="reset_board()">Reset</button>
